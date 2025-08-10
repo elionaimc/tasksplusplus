@@ -1,8 +1,8 @@
 # Tasks++
 
 ### Task manager app using:
-    + Backend in NestJS.
-    + Frontend in Angular (newest version)
+    + Backend in NestJS (using v11.0.10).
+    + Frontend in Angular (newest version, v20.1.5)
 
 ### Features:
     + Task Creation: Users can create new tasks by providing a task title and a description.
@@ -36,3 +36,7 @@
         + Priority
         + Categories
         + Completion status
+
+## About development choices made in Angular app:
+    + Using zoneless app whitout zone.js (pre-release feature included in v20)
+    + Enabled SSR (server-side rendering) and SSG (static site generation) features
