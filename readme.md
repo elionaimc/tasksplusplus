@@ -29,7 +29,6 @@
         + Personal
         + Shopping
 
-
     + Sorting and Filtering
         Users can filter and sort tasks in the listview based on the following criteria:
         + Due date
@@ -37,6 +36,8 @@
         + Categories
         + Completion status
 
-## About development choices made in Angular app:
-    + Using zoneless app whitout zone.js (pre-release feature included in v20)
-    + Enabled SSR (server-side rendering) and SSG (static site generation) features
+### About development choices made in Angular app:
+    + Use of zoneless app whitout zone.js (pre-release feature included in v20),
+    + Enabled SSR (server-side rendering),
+    + Use of oklch notation for colors, added in the [CSS Color 4 specification](https://www.w3.org/TR/css-color-4/), which has better consistency for the human eyes,
+    + Use of font-optical-sizing property to improve readability and aesthetics.

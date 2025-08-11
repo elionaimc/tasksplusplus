@@ -1,0 +1,101 @@
+:host {
+    --bright-blue: oklch(51.01% 0.274 263.83);
+    --winter-blue: oklch(0.6017 0.101 220.95);
+    --electric-green: oklch(0.8625 0.2455 146.59);
+    --dark-green: oklch(0.4747 0.081 194.77);
+
+    --gray-700: oklch(36.98% 0.014 302.71);
+    --gray-400: oklch(70.9% 0.015 304.04);
+    --gray-100: oklch(80.9% 0.015 304.04);
+
+    --blue-to-green-vertical-gradient: linear-gradient(
+      180deg,
+      var(--winter-blue) 0%,
+      var(--electric-green) 50%,
+      var(--dark-green) 100%
+    );
+
+    --blue-to-green-horizontal-gradient: linear-gradient(
+      90deg,
+      var(--winter-blue) 0%,
+      var(--electric-green) 50%,
+      var(--dark-green) 100%
+    );
+}
+
+main {
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    box-sizing: inherit;
+    position: relative;
+    font-family: "Work Sans", serif;
+    font-optical-sizing: auto;
+}
+
+.cloudplusplus-logo {
+    max-width: 8rem;
+}
+
+.divider {
+    width: 3px;
+    background: var(--blue-to-green-vertical-gradient);
+    margin-inline: 1.5rem;
+}
+
+.content {
+    display: flex;
+    justify-content: left;
+    width: calc(100% - 1.6rem);
+    max-width: 1080px;
+    padding: .8rem;
+}
+
+h1 {
+    margin-top: 1.5rem;
+    font-family: "Work Sans", serif !important;
+    font-optical-sizing: auto;
+}
+
+p {
+    margin-top: 1.5rem;
+    font-family: "Work Sans", serif !important;
+    font-optical-sizing: auto;
+}
+
+.add-button {
+    float: inline-end;
+}
+
+.left-side {
+    max-width: 40%;
+}
+
+.right-side {
+    min-width: 60% !important;
+}
+
+@media screen and (max-width: 959px) {
+    main {
+        display: contents !important;
+        padding-top: .7rem;
+    }
+
+    .content {
+      flex-direction: column;
+      width: calc(100% - 1.6rem );
+    }
+
+    .left-side {
+        max-width: 100%;
+    }
+
+    .divider {
+      height: 2px;
+      width: 100%;
+      background: var(--blue-to-green-horizontal-gradient);
+      margin-block: 1.5rem;
+      margin-inline: 0 !important;
+    }
+}
