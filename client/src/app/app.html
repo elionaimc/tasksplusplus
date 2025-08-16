@@ -20,10 +20,52 @@
       </p>
     </div>
 
-    <div class="divider" role="separator" aria-label="Divider"></div>
+    <div class="divider" aria-label="Divider"></div>
     
     <div class="right-side">
-      <!-- here goes the tasks list -->
+     <div>
+        @for (task of taskService.tasksSignal(); track task; let idx = $index) {
+          <mat-accordion style="min-width: 100%;" *ngIf="filter(idx)">
+            <mat-expansion-panel (opened)="changeState(idx, true)" (closed)="changeState(idx, false)" [class]="(task.finished) ? 'mat-elevation-z finished' : 'mat-elevation-z'">
+              <mat-expansion-panel-header [class]="(task.finished) ? 'finished' : ''">
+                <mat-panel-title [class]="(task.finished) ? 'light-gray line-through' : 'primary bolder'"> {{ task.title }} </mat-panel-title>
+                  @if(!states[idx]) {
+                    @if(!isSmallScreen) {
+                      <span class="gray pt-8 small">{{ task.updatedAt }} &nbsp; </span>
+                      &nbsp; 
+                    }
+                    <button mat-icon-button (click)="editStatusTask(idx, $event)">
+                      <mat-icon [class]="(task.finished) ? 'success' : 'light-gray'">done_all</mat-icon>
+                    </button> &nbsp;  &nbsp;  &nbsp; 
+                  }
+                </mat-expansion-panel-header>
+                <span [class]="(task.finished) ? 'mt-13 pl-13 light-gray' : 'mt-13 pl-13 dark-gray'">{{ task.description }}</span>
+                <br/>
+                @if (!task.finished) {
+                  <button mat-button disabled><mat-icon>event_available</mat-icon> {{ task.createdAt }}</button>
+                  <button mat-button disabled><mat-icon>edit</mat-icon> {{ task.updatedAt }}</button>
+                } @else {
+                  <button mat-button disabled><mat-icon>done_all</mat-icon> {{ task.updatedAt }}</button>
+                }
+                <mat-action-row>
+                  @if (!task.finished) {
+                    <button mat-icon-button (click)="editTask(task, idx)" class="dark-gray">
+                      <mat-icon>edit</mat-icon>
+                    </button>
+                  }
+                  @if(states[idx]) {
+                    <button mat-icon-button (click)="editStatusTask(idx, $event)" >
+                      <mat-icon [class]="(task.finished) ? 'gray' : 'dark-gray'">done_all</mat-icon>
+                    </button> 
+                  } 
+                  <button mat-icon-button (click)="deleteTask(idx)">
+                    <mat-icon [class]="(task.finished) ? 'gray' : 'danger'">delete_outline</mat-icon>
+                  </button>
+                </mat-action-row>
+            </mat-expansion-panel>
+          </mat-accordion>
+        }
+      </div>
     </div>
 
   </div>

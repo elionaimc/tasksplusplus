@@ -1,0 +1,17 @@
+<div>
+  <h2 mat-dialog-title>
+    <mat-icon style="margin: 0 0 -2px -2px !important; font-size:1.7rem; color: red !important;">report_gmailerrorred</mat-icon>
+    <span style="font-family: Agdasima, serif !important; font-weight: 700;"> {{ data.label }} </span>
+  </h2>
+  <mat-dialog-content>
+    {{ data.message }}
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>
+      <mat-icon>close</mat-icon> CANCELAR
+    </button>&nbsp;
+    <button mat-button style="background-color: oklch(61.42% 0.238 15.34); color: #fff" [mat-dialog-close]="true">
+      <mat-icon>{{ data.button[0] }}</mat-icon> {{ data.button[1] || 'OK' }}
+    </button>
+  </mat-dialog-actions>
+</div>

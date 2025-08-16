@@ -1,0 +1,46 @@
+<mat-card>
+    <mat-card-content>
+        <mat-form-field
+        style="width: 100%;">
+            <mat-label>Título</mat-label>
+            <input
+              matInput
+              placeholder="Elaborar lista de compras"
+              [formControl]="title"
+              (blur)="updateErrorMessage('title')"
+              required
+            />
+            @if (title.invalid) {
+              <mat-error>{{titleErrorMessage()}}</mat-error>
+            }
+        </mat-form-field>
+        <mat-form-field
+        style="width: 100%;">
+            <mat-label>Descrição</mat-label>
+            <textarea
+                matInput
+                [formControl]="description"
+                (blur)="updateErrorMessage('description')"
+                required
+                rows="4"
+            ></textarea>
+            @if (description.invalid) {
+              <mat-error>{{descriptionErrorMessage()}}</mat-error>
+            }
+        </mat-form-field>
+        <p><mat-slide-toggle [(ngModel)]="finished"> Finalizada? </mat-slide-toggle></p>
+        <button mat-button disabled><mat-icon>event_available</mat-icon> {{ data.created_at }}</button>
+        <button mat-button disabled><mat-icon>edit</mat-icon> {{ data.edited_at }}</button>
+    </mat-card-content>
+    <mat-card-actions align="end">
+        <button
+            mat-button
+            cdkFocusRegionstart
+            (click)="dialogRef.close()">
+            <mat-icon>close</mat-icon> CANCELAR
+        </button> &nbsp; &nbsp; 
+        <button mat-flat-button [disabled]="!title.valid || !description.valid" (click)="edit()">
+            <mat-icon>save</mat-icon> SALVAR
+        </button>
+    </mat-card-actions>
+</mat-card>
